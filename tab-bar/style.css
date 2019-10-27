@@ -1,0 +1,88 @@
+/* 背景：7dbfff
+图表&标签：4a98e7
+遮罩：e4f2ff */
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    height: 100vh;
+    background: #7dbfff;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#nav-bar{
+    position: relative;
+    height: 150px;
+    width: 600px;
+    background: #fff;
+
+    display: flex;
+    border-radius: 20px 20px 90px 90px;
+
+    overflow: hidden;
+
+    border:20px solid white;
+}
+
+.nav-bar-item{
+    width: 130px;
+    height: 100%;
+    z-index: 2;
+
+    position: relative;
+
+    cursor: pointer;
+    transition: .3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-bar-item.active{
+    width: 210px;
+}
+
+.nav-bar-item_icon{
+    color: #4a98e7;
+    font-size: 32px;
+    transform: translate(0,0px);
+    transition: .3s;
+}
+
+.active .nav-bar-item_icon{
+    transform: translate(0,-10px);
+}
+
+.nav-bar-item_label{
+    color: #4a98e7;
+    font-size: 20px;
+    user-select: none;
+    opacity: 0;
+    transition: .3s;
+}
+
+.active .nav-bar-item_label{
+    opacity: 1;
+}
+
+.nav-bar-overlay{
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 210px;
+
+    border-radius: 20px;
+
+    background-color: #e4f2ff;
+
+    transition: .3s;
+}
