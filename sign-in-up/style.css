@@ -16,17 +16,17 @@ body{
 
 .container{
     position: relative;
-    width: 70rem;
+    width: 100rem;
     background-color: #fff;
 }
 
 .container img{
-    width: 50rem;
+    width: 75rem;
     height: 50rem;
 }
 
 .panel{
-    width: 23%;
+    width: 19%;
     margin: 10rem 0 0;
     position: absolute;
     right: 0;

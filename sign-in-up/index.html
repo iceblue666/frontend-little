@@ -12,20 +12,20 @@
 
 <body>
     <div class="container">
-        <img src="./bg.jpg" alt="">
+        <img src="bg1.png" alt="">
         <div class="panel">
             <div class="content login">
                 <div class="switch"><span id="login" class="active">Login</span>
                     <span>/</span>
                     <span id="signup">Sign Up</span>
                 </div>
-                <form action="">
-                    <div id="email" class="input" placeholder="Email"><input type="text"></div>
-                    <div class="input" placeholder="Username"><input type="text"></div>
-                    <div class="input" placeholder="Password"><input type="password"></div>
-                    <div id="repeat" class="input" placeholder="Repeat"><input type="password"></div>
+                <form id="form" action="1.html">
+                    <div id="email" class="input" placeholder="Email"><input name="email" type="text"></div>
+                    <div class="input" placeholder="Username"><input name="username" type="text"></div>
+                    <div class="input" placeholder="Password"><input name="password" type="password"></div>
+                    <div id="repeat" class="input" placeholder="Repeat"><input name="repeat" type="password"></div>
                     <span>Forget?</span>
-                    <button>LOGIN</button>
+                    <button id="btn">LOGIN</button>
                 </form>
             </div>
         </div>
@@ -34,7 +34,7 @@
 
     <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
     <script>
-        $('#login').click(function () {
+                $('#login').click(function () {
             $('.switch span').removeClass('active');
             $(this).addClass('active');
 
@@ -42,6 +42,7 @@
             $(this).parents('.content').addClass('login');
 
             $('form button').text('LOGIN');
+            $('#form').attr("action", "login");
         })
 
         $('#signup').click(function () {
@@ -52,6 +53,7 @@
             $(this).parents('.content').addClass('signup');
 
             $('form button').text('SIGNUP');
+            $('#form').attr("action", "register");
         })
 
         $('.input input').on('focus',function(){
@@ -61,6 +63,10 @@
         $('.input input').on('blur',function(){
             if($(this).val() === '')
                 $(this).parent().removeClass('focus');
+        })
+
+        $('#btn').click(function() {
+            $('#form input').val("");
         })
     </script>
 </body>
