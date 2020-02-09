@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>threejs-雪花</title>
+    <script src="./three/three.js"></script>
+    <script src="./three/OrbitControls.js"></script>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <script>
+        var width = window.innerWidth;
+        var height = window.innerHeight;
+
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(50,width/height,0.1,800);
+
+        camera.position.x = 0;
+        camera.position.y = 0;
+        camera.position.z = 20;
+
+        camera.lookAt(scene.position);
+
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(width,height);
+
+        document.body.appendChild(renderer.domElement);
+
+        var OrbitControls = new THREE.OrbitControls(camera);
+
+        OrbitControls.autoRotate = true;
+
+        var geometry = new THREE.Geometry();
+
+        var texture = new THREE.TextureLoader().load("./image/snow.jpg");
+
+        var material = new THREE.PointsMaterial({
+            size:20,
+            map:texture,
+            transparent: true,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+        })
+        range = 500;
+        for (var i = 0; i < 400; i++) {
+            var	 particle = new THREE.Vector3(
+            Math.random() * range - range / 2,
+            Math.random() * range * 1.5,
+            Math.random() * range - range / 2);
+            particle.velocityY = 0.1 + Math.random() / 5;
+            particle.velocityX = (Math.random() - 0.5) / 3;
+            particle.velocityZ = (Math.random() - 0.5) / 3;
+            geometry.vertices.push(particle);
+        }
+
+         var points = new THREE.Points(geometry, material);
+
+         scene.add(points);
+
+         render();
+         function render(){
+
+             renderer.render(scene,camera);
+
+             scene.children.forEach(function (child) {
+                if(child instanceof THREE.Points) {
+                        var vertices = child.geometry.vertices;
+                        child.geometry.verticesNeedUpdate = true;
+            
+                        vertices.forEach(function (v) {
+                        v.y = v.y - (v.velocityY);
+                        v.x = v.x - (v.velocityX);
+                        v.z = v.z - (v.velocityZ);
+                        // y 的边界值
+                        if(v.y <= -height / 2) {
+                            v.y = height / 2;
+                        }
+            
+                        // x 的边界值
+                        if(v.x <= -width / 2 || v.x >= width / 2) {
+                            v.velocityX = v.velocityX * -1;
+                        }
+            
+                        // z 的边界值
+                        if(v.z <= -60 || v.z >= 60) {
+                                v.velocityZ = v.velocityZ * -1;
+                        }
+                        })
+                   }
+                })
+
+             requestAnimationFrame(render);
+         }
+
+    </script>
+</body>
+
+</html>
