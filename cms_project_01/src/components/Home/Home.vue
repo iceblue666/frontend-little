@@ -1,9 +1,9 @@
 <template>
   <div id="home">
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000" style="height:200px; ">
+    <mt-swipe :auto="4000" class="swiper-fa">
       <mt-swipe-item v-for="(item, index) in imgs" :key="index" class="swiper">
-        <img :src="item.img" alt>
+        <img :src="item.img" alt />>
       </mt-swipe-item>
     </mt-swipe>
     <!--/ 轮播图 -->
@@ -45,7 +45,7 @@ export default {
   },
   created() {
     this.$axios
-      .get("/home")
+      .get("home")
       .then(res => {
         // console.log(res.data.data.message);
         this.imgs = res.data.data.message;
@@ -59,12 +59,16 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.swiper-fa{
+  height:250px;
+}
 .swiper {
   width: 100%;
   height: 250px;
 }
 .list {
   width: 100%;
+  height: 100%;
 }
 .list ul {
   display: flex;
