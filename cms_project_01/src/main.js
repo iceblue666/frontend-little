@@ -13,8 +13,11 @@ import 'mint-ui/lib/style.css'
 // 引入全局css文件
 import '../static/css/global.css'
 
+// 引入mockjs
+require('./mock.js');
+
 // 配置公共URL
-Axios.defaults.baseURL = ' https://easy-mock.com/mock/5c7f92c788e28e3357e28d9e/v1'
+// Axios.defaults.baseURL = ' https://easy-mock.com/mock/5c7f92c788e28e3357e28d9e/v1'
 // 配置axios
 Vue.prototype.$axios = Axios;
 

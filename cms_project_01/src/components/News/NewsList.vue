@@ -34,9 +34,10 @@ export default {
   },
   created() {
     this.$axios
-      .get("newslist")
+      .get("api/newslist")
       .then(res => {
-        this.newsList = res.data.data.newslist;
+        
+        this.newsList = res.data.data;
       })
       .catch(err => {
         console.log(err);

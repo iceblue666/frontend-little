@@ -3,7 +3,7 @@
     <!-- 轮播图 -->
     <mt-swipe :auto="4000" class="swiper-fa">
       <mt-swipe-item v-for="(item, index) in imgs" :key="index" class="swiper">
-        <img :src="item.img" alt />>
+        <img :src="item.img_url" alt />>
       </mt-swipe-item>
     </mt-swipe>
     <!--/ 轮播图 -->
@@ -31,7 +31,7 @@ var grids = [
   { id: 3, src: src1, title: "商品展示", router:{name:'news.list'} },
   { id: 4, src: src1, title: "资讯", router:{name:'news.list'} },
   { id: 5, src: src1, title: "留言反馈", router:{name:'news.list'} },
-  { id: 6, src: src1, title: "联系我们", router:{name:'news.list'} },
+  { id: 6, src: src1, title: "联系我们", router:{name:'news.list'} }
 
 ];
 
@@ -45,10 +45,10 @@ export default {
   },
   created() {
     this.$axios
-      .get("home")
+      .get("api/home")
       .then(res => {
-        // console.log(res.data.data.message);
-        this.imgs = res.data.data.message;
+        // console.log(res);
+        this.imgs = res.data.data;
         // console.log(this.imgs);
       })
       .catch(err => {
