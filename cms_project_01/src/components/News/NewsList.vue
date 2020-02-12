@@ -53,31 +53,40 @@ export default {
 }
 .news {
   width: 100%;
+  padding-top: 40px;
+  padding-bottom: 55px;
 }
 .news .newsList {
   width: 100%;
+  border-bottom: 1px solid #CCCCCC;
+  font-size: 12px;
 }
-.news .newsList ul {
-  display: flex;
-  flex-wrap: wrap;
-}
+
 .news .newsList ul li {
-    width: 100%;
-  height: 100px;
-  font-size: 14px;
-  margin: 10px 2px;
+    position: relative;
   
 }
 .news .newsList ul li a {
+  display: block;
   width: 100%;
-  height: 100%;
+  height: 150px;
+  color: #808080;
   display: flex;
-  flex-direction: row;
-  position: relative;
+  text-decoration: none;
 }
 .news .newsList ul li a .news_img {
   width: 30%;
-  
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.news .newsList ul li a img{
+  width: 100px;
+  height: 80px;
+  background-color: red;
+  border-radius: 3px;
+
 }
 .content {
   width: 65%;
