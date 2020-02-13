@@ -15,7 +15,7 @@
     <div class="tabBar">
       <ul>
         <li v-for="(tab, index) in tabs" :key="tab.id">
-          <router-link :to="tab.routerName.name">
+          <router-link :to="tab.routerName" exact>
             <img :src="tab.imgSrc">
             <p>{{tab.title}}</p>
           </router-link>
