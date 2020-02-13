@@ -25,5 +25,25 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+.header{
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    background-color: #FD8008;
+}
+h3{
+    float: left;
+}
+h3.back{
+    margin-left: 15px;
+}
+h3.desc_title{
+    position: absolute;
+    width: 200px;
+    height: 40px;
+    left: 50%;
+    margin-left: -100px;
+    text-align: center;
+}
 </style>

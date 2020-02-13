@@ -8,7 +8,7 @@ const produceNewsData = function () {
         let newArticleObject = {
             img_url: Random.dataImage('100x100','mock图片'),
             title: Random.csentence(5, 30),
-            summary: Random.csentence(30,60),
+            summary: Random.csentence(10,30),
             click: 0,
             time:Random.date() + ' ' + Random.time()
         }

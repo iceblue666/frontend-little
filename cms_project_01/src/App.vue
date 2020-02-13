@@ -83,7 +83,7 @@ export default {
   width: 100%;
   height: 55px;
   background: #CCC;
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   background-image: linear-gradient(180deg, #d9d9d9, #d9d9d9 50%, transparent 50%);
