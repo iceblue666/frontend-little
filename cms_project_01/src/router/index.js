@@ -21,22 +21,22 @@ export default new Router({
     },
     {
       path: '/home',
-      name: 'Home',
+      name: 'home',
       component: Home
     },
     {
       path: '/vip',
-      name: 'Vip',
+      name: 'vip',
       component: Vip
     },
     {
       path: '/cart',
-      name: 'Cart',
+      name: 'cart',
       component: Cart
     },
     {
       path: '/search',
-      name: 'Search',
+      name: 'search',
       component: Search
     },
     {

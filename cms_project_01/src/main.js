@@ -21,6 +21,9 @@ require('./mock.js');
 // 配置axios
 Vue.prototype.$axios = Axios;
 
+import Navbar from '@/components/Common/Navbar'
+Vue.component(Navbar.name,Navbar);
+
 
 /* eslint-disable no-new */
 new Vue({
