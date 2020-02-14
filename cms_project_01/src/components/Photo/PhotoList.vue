@@ -2,14 +2,8 @@
   <div class="photoList">
     <div class="category-list">
       <ul>
-        <li>
-          <a href>标题1</a>
-        </li>
-        <li>
-          <a href>标题2</a>
-        </li>
-        <li>
-          <a href>标题3</a>
+        <li v-for="(category,index) in categoryList">
+            <a href="">{{category.title}}</a>
         </li>
       </ul>
     </div>
@@ -37,8 +31,21 @@ export default {
   name: "PhotoList",
   data() {
     return {
-      imgList
+      categoryList:[],
+      imgList:[]
     };
+  },
+  created(){
+      this.$axios.get('api/getimgcategory')
+      .then( res=>{
+          console.log(res);
+          this.categoryList = res.data.message;
+          console.log(res.data.message);
+      })
+      .catch(err=>{
+          console.log('分类信息错误',err);
+      })
+      
   }
 };
 </script>

@@ -2,6 +2,8 @@ const Mock = require('mockjs');
 
 const Random = Mock.Random;
 
+const imgcategoryList = [{title:'明星美女'},{title:'空间设计'},{title:'户型装修'},{title:'广告摄影'},{title:'摄影技术'},{title:'拍摄手法'}]
+
 const produceNewData = function () {
     let newArticleObject = {
         id:1,
@@ -56,3 +58,4 @@ const produceHomeData = function () {
 Mock.mock('api/newslist','get',produceNewsData);
 Mock.mock('api/home','get',produceHomeData);
 Mock.mock(/api\/getnew\/./,'get',produceNewData);
+Mock.mock('api/getimgcategory','get',{message:imgcategoryList})
