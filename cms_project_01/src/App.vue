@@ -91,6 +91,7 @@ export default {
   background-repeat: no-repeat;
   background-position: top left;
   background-color: #fafafa;
+  z-index: 10;
 }
 .tabBar ul{
   width: 100%;

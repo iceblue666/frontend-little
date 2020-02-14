@@ -4,7 +4,7 @@
     <div class="newsList">
       <ul>
         <li v-for="(news, index) in newsList" :key="news.id">
-          <a href="#">
+          <router-link :to='{name:"detail",query:{id:news.id}}'>
             <div class="news_img">
               <img :src="news.img_url">
             </div>
@@ -14,11 +14,11 @@
                 <p class="summary">{{news.summary}}</p>
                 <p>
                   <span class="praise">点赞数:{{news.click}}</span>
-                  <span class="time">发表时间:{{news.time}}</span>
+                  <span class="time">发表时间:{{news.time | converTime('YYYY-MM-DD')}}</span>
                 </p>
               </div>
             </div>
-          </a>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -37,7 +37,7 @@ export default {
     this.$axios
       .get("api/newslist")
       .then(res => {
-        
+        console.log(res.data.data);
         this.newsList = res.data.data;
       })
       .catch(err => {
@@ -50,7 +50,7 @@ export default {
 <style scoped>
 * {
   box-sizing: border-box;
-  
+  color: #111111;
 }
 .news {
   width: 100%;
@@ -107,6 +107,6 @@ export default {
 .time {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 20px;
 }
 </style>

@@ -3,6 +3,8 @@ import App from './App'
 import router from './router'
 import Axios from 'axios'
 
+import Moment from 'moment'
+
 Vue.config.productionTip = false
 
 // 使用mint-ui 引入全部组件
@@ -24,6 +26,8 @@ Vue.prototype.$axios = Axios;
 import Navbar from '@/components/Common/Navbar'
 Vue.component(Navbar.name,Navbar);
 
+// 自定义Moment全局过滤器
+Vue.filter('converTime',(data, formatStr) => Moment(data).format(formatStr));
 
 /* eslint-disable no-new */
 new Vue({
