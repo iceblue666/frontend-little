@@ -13,7 +13,7 @@
       <ul>
         <li v-for="(item,index) in imgList" :key="item.id">
           <a href>
-            <img :src="item.img_url" alt="" />
+            <img v-lazy="item.img_url"  />
           </a>
           <p>
             <span>{{item.title}}</span>
@@ -37,13 +37,13 @@ export default {
   },
   methods:{
     loadImgByCategoryId(id){
-        this.$axios.get('getimages/'+id)
+        this.$axios.get('api/getimages/'+id)
         .then(res=>{
-          this.imgList = res.data.message;
+          this.imgList = res.data.data;
         })
         .catch(err=>{
           console.log("图片加载失败",err);
-        }
+        })
     }
   },
   created(){
