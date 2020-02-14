@@ -9,6 +9,7 @@ import Cart from '@/components/Cart/Cart'
 import Search from '@/components/Search/Search'
 import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
+import PhotoList from '@/components/Photo/PhotoList'
 
 // 使用vue-router插件 Vue。prototype.$router = Router
 Vue.use(Router)
@@ -49,6 +50,11 @@ export default new Router({
       path:"/news/detail",
       name:"detail",
       component:NewsDetail
+    },
+    {
+      path:"/photo/list/:categoryId",
+      name:"photo.list",
+      component:PhotoList
     }
   ]
 })

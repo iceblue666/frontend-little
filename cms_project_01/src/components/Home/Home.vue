@@ -27,7 +27,7 @@ import src1 from "../../assets/logo.png";
 
 var grids = [
   { id: 1, src: src1, title: "新闻资讯", router:{name:'news.list'}},
-  { id: 2, src: src1, title: "图文分享", router:{name:'news.list'} },
+  { id: 2, src: src1, title: "图文分享", router:{name:'photo.list',params:{categoryId:0}} },
   { id: 3, src: src1, title: "商品展示", router:{name:'news.list'} },
   { id: 4, src: src1, title: "资讯", router:{name:'news.list'} },
   { id: 5, src: src1, title: "留言反馈", router:{name:'news.list'} },
