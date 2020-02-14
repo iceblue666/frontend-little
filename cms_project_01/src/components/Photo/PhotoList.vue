@@ -13,12 +13,12 @@
       <ul>
         <li v-for="(item,index) in imgList" :key="item.id">
           <a href>
-            <img src alt />
+            <img :src="item.img_url" alt="" />
           </a>
           <p>
-            <span>图片标题</span>
+            <span>{{item.title}}</span>
             <br />
-            <span>图片摘要</span>
+            <span>{{item.zhaiyao}}</span>
           </p>
         </li>
       </ul>
@@ -35,7 +35,20 @@ export default {
       imgList:[]
     };
   },
+  methods:{
+    loadImgByCategoryId(id){
+        this.$axios.get('getimages/'+id)
+        .then(res=>{
+          this.imgList = res.data.message;
+        })
+        .catch(err=>{
+          console.log("图片加载失败",err);
+        }
+    }
+  },
   created(){
+      this.loadImgByCategoryId(0);
+
       this.$axios.get('api/getimgcategory')
       .then( res=>{
           console.log(res);
