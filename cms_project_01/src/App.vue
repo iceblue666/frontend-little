@@ -15,7 +15,7 @@
     <div class="tabBar">
       <ul>
         <li v-for="(tab, index) in tabs" :key="tab.id">
-          <router-link :to="tab.routerName" exact>
+          <router-link :to="tab.routerName" exact @click.native="changeHash(index)" :class='{"link-active":index == currentIndex}'>
             <img :src="tab.imgSrc">
             <p>{{tab.title}}</p>
           </router-link>
@@ -61,8 +61,14 @@ export default {
   data() {
     return {
       selected: "",
-      tabs: tabs
+      tabs: tabs,
+      currentIndex:0
     };
+  },
+  methods:{
+    changeHash(index){
+      this.currentIndex = index;
+    }
   },
   watch: {
     selected: function(newV, oldV) {
