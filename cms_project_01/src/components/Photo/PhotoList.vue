@@ -38,7 +38,7 @@ export default {
   },
   methods:{
     categoryHandler(id, index){
-        console.log(id);
+        // console.log(id);
         this.$router.push({name:"photo.list",params:{categoryId:id}});
         this.currentIndex = index;
     },
@@ -60,6 +60,7 @@ export default {
     next(vm => {
     // 通过 `vm` 访问组件实例
     vm.loadImgByCategoryId(to.params.categoryId);
+    vm.currentIndex = to.params.categoryId;
   })
   },
   beforeRouteUpdate (to,from,next){
