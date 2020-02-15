@@ -2,8 +2,8 @@
   <div class="photoList">
     <div class="category-list">
       <ul>
-        <li v-for="(category,index) in categoryList">
-            <a href="">{{category.title}}</a>
+        <li v-for="(category,index) in categoryList" @click="categoryHandler(category.id,index)">
+            <a href="javascript:void(0);" :class='{active:index == currentIndex}'>{{category.title}}</a>
         </li>
       </ul>
     </div>
@@ -32,13 +32,20 @@ export default {
   data() {
     return {
       categoryList:[],
-      imgList:[]
+      imgList:[],
+      currentIndex:0
     };
   },
   methods:{
+    categoryHandler(id, index){
+        console.log(id);
+        this.$router.push({name:"photo.list",params:{categoryId:id}});
+        this.currentIndex = index;
+    },
     loadImgByCategoryId(id){
         this.$axios.get('api/getimages/'+id)
         .then(res=>{
+          // console.log(res.data);
           this.imgList = res.data.data;
         })
         .catch(err=>{
@@ -46,14 +53,21 @@ export default {
         })
     }
   },
+  beforeRouteUpdate (to,from,next){
+    // console.log(to.params.categoryId);
+    this.loadImgByCategoryId(to.params.categoryId);
+
+    next();
+  },
   created(){
       this.loadImgByCategoryId(0);
 
       this.$axios.get('api/getimgcategory')
       .then( res=>{
-          console.log(res);
+          // console.log(res);
           this.categoryList = res.data.message;
-          console.log(res.data.message);
+          this.categoryList.unshift({"id":0,"title":"全部"});
+          // console.log(res.data.message);
       })
       .catch(err=>{
           console.log('分类信息错误',err);
@@ -71,7 +85,7 @@ export default {
 }
 .category-list ul {
   width: 100%;
-  height: 50px;
+  /* height: 50px; */
   overflow-y: hidden;
   overflow-x: scroll;
   white-space: nowrap;
