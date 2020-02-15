@@ -10,6 +10,7 @@ import Search from '@/components/Search/Search'
 import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
 import PhotoList from '@/components/Photo/PhotoList'
+import PhotoDetail from '@/components/Photo/PhotoDetail';
 
 // 使用vue-router插件 Vue。prototype.$router = Router
 Vue.use(Router)
@@ -55,6 +56,11 @@ export default new Router({
       path:"/photo/list/:categoryId",
       name:"photo.list",
       component:PhotoList
-    }
+    },
+    {
+      path:"/photo/detail",
+      name:"photo.detail",
+      component:PhotoDetail
+    },
   ]
 })

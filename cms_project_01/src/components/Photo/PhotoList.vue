@@ -12,9 +12,9 @@
     <div class="photo-list">
       <ul>
         <li v-for="(item,index) in imgList" :key="item.id">
-          <a href>
+          <router-link :to='{name:"photo.detail",query:{id:item.id}}'>
             <img v-lazy="item.img_url"  />
-          </a>
+          </router-link>
           <p>
             <span>{{item.title}}</span>
             <br />
@@ -53,6 +53,15 @@ export default {
         })
     }
   },
+  beforeRouteEnter (to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+    next(vm => {
+    // 通过 `vm` 访问组件实例
+    vm.loadImgByCategoryId(to.params.categoryId);
+  })
+  },
   beforeRouteUpdate (to,from,next){
     // console.log(to.params.categoryId);
     this.loadImgByCategoryId(to.params.categoryId);
@@ -60,7 +69,7 @@ export default {
     next();
   },
   created(){
-      this.loadImgByCategoryId(0);
+      // this.loadImgByCategoryId(0);
 
       this.$axios.get('api/getimgcategory')
       .then( res=>{
