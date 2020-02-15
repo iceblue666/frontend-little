@@ -1,13 +1,21 @@
 <template>
-  <div>
+  <div class="photo-detail">
     <div class="photo-little">
-      <p>图片标题</p>
-      <span>发起日期:2017-07-09</span>
-      <span>0次浏览</span>
+      <p>{{imgInfo.title}}</p>
+      <span>发起日期:{{imgInfo.add_time | converTime('YYYY-MM-DD')}}</span>
+      <span>{{imgInfo.click}}次浏览</span>
       <span>分类:民生经济</span>
 
+        <ul>
+            <li v-for="(thumImg,index) in thumImgs" :key="index">
+                <a href="javascript:void(0)">
+                    <img :src="thumImg.src" alt=""/>
+                </a>
+            </li>
+        </ul>
+
       <div class="photo-desc">
-        <p></p>
+        <p>{{imgInfo.content}}</p>
       </div>
 
       <!-- <Comment :cid = '$route.query.id' /> -->
@@ -17,28 +25,52 @@
 
 <script>
 export default {
-    name:'PhotoDetail',
-    data(){
-        return{
+  name: "PhotoDetail",
+  data() {
+    return {
+        imgInfo:{},
+        thumImgs:[]
+    };
+  },
+  created() {
 
-        }
+      let id = this.$route.query.id;
+    var getImageInfo = ()=> {
+      return this.$axios.get("api/getimageinfo/"+id);
     }
+
+    var getThumImages = ()=> { // 如果使用普通函数，this为undefined
+      return this.$axios.get("api/getthumimages/"+id);
+    }
+    this.$axios.all([getImageInfo(), getThumImages()]).then(
+      this.$axios.spread((acct, perms)=> {
+        // 两个请求现在都执行完成
+        console.log(acct);
+        console.log(perms);
+        this.imgInfo = acct.data.data;
+        this.thumImgs = perms.data.data;
+      })
+    );
+  }
 };
 </script>
 
 <style scoped>
-.photo-little p{
-    font-size: 20px;
-    font-weight: 600;
-    color: #0F80FF;
-    margin: 15px 0;
+.photo-detail{
+    width: 100%;
+    margin-bottom: 60px;
 }
-.photo-little span{
-    padding: 10px 5px;
+.photo-little p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0f80ff;
+  margin: 15px 0;
 }
-.photo-desc p{
-    font-size: 18px;
-    color: #333333;
+.photo-little span {
+  padding: 10px 5px;
 }
-
+.photo-desc p {
+  font-size: 18px;
+  color: #333333;
+}
 </style>

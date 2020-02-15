@@ -69,7 +69,38 @@ const producePhotoData = function() {
     }
 };
 
+const produceImageInfoData = function () {
 
+
+        let newImageInfoObject = {
+            id:1,
+            img_url: Random.dataImage('100x100','mock图片'),
+            title: Random.csentence(5, 30),
+            summary: Random.csentence(10,30),
+            click: Random.natural(10,1000),
+            time:Random.date() + ' ' + Random.time(),
+            add_time:Random.date() + ' ' + Random.time(),
+            content:Random.cparagraph( 10, 50)
+        }
+
+    
+    return {
+        data:newImageInfoObject
+    }
+}
+
+const produceThumImagesData = function() {
+    let Images = [];
+    for(let i = 1; i <= Random.integer(4, 9); i++) {
+        let ThumImagesObject = {
+            src:Random.dataImage('300x225','mock图片')
+        }
+        Images.push(ThumImagesObject);
+    }
+    return{
+        data:Images
+    }
+};
 
 Mock.mock('api/newslist','get',produceNewsData);
 Mock.mock('api/home','get',produceHomeData);
@@ -78,3 +109,5 @@ Mock.mock('api/getimgcategory','get',{message:imgcategoryList});
 Mock.mock(/api\/getimages/,'get',producePhotoData);
 // Mock.mock('api/getimages/0','get',producePhotoData);
 // Mock.mock('api/getimages/1','get',producePhotoData);
+Mock.mock(/api\/getimageinfo/,'get',produceImageInfoData);
+Mock.mock(/api\/getthumimages/,'get',produceThumImagesData);
