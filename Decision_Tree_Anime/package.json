@@ -1,0 +1,16 @@
+{
+  "name": "decision_tree_anime",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "animejs": "^3.1.0",
+    "d3": "^5.15.0",
+    "echarts": "^4.6.0"
+  }
+}
