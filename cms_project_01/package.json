@@ -20,6 +20,7 @@
     "serialize-javascript": "^3.0.0",
     "set-value": "^3.0.1",
     "vue": "^2.6.11",
+    "vue-awesome": "^4.0.2",
     "vue-router": "^3.1.6"
   },
   "devDependencies": {

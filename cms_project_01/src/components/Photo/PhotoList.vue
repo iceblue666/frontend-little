@@ -47,6 +47,13 @@ export default {
         .then(res=>{
           // console.log(res.data);
           this.imgList = res.data.data;
+
+          if(this.imgList.length === 0){
+            Toast({
+              message:"没有图片",
+              iconClass:'fa fa-address-book'
+            })
+          }
         })
         .catch(err=>{
           console.log("图片加载失败",err);

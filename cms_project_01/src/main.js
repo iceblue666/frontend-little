@@ -15,6 +15,10 @@ import 'mint-ui/lib/style.css'
 // 引入全局css文件
 import '../static/css/global.css'
 
+// 引入awesome图标库
+import 'vue-awesome'
+
+
 // 引入mockjs
 require('./mock.js');
 
