@@ -49,9 +49,10 @@ export default {
           this.imgList = res.data.data;
 
           if(this.imgList.length === 0){
-            Toast({
+            this.$toast({
               message:"没有图片",
-              iconClass:'fa fa-address-book'
+              iconClass:'fa fa-times',
+              duration:10000
             })
           }
         })

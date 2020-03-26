@@ -55,15 +55,15 @@ const produceHomeData = function () {
 
 const producePhotoData = function() {
     let Images = [];
-    for(let i = 1; i <= Random.integer(6, 10); i++) {
-        let newPhotoObject = {
-            id:i,
-            img_url: Random.dataImage('375x250','mock图片'),
-            title:Random.csentence(5,15),
-            zhaiyao:Random.cparagraph(3,6),
-        }
-        Images.push(newPhotoObject);
-    }
+    // for(let i = 1; i <= Random.integer(6, 10); i++) {
+    //     let newPhotoObject = {
+    //         id:i,
+    //         img_url: Random.dataImage('375x250','mock图片'),
+    //         title:Random.csentence(5,15),
+    //         zhaiyao:Random.cparagraph(3,6),
+    //     }
+    //     Images.push(newPhotoObject);
+    // }
     return{
         data:Images
     }

@@ -16,7 +16,7 @@ import 'mint-ui/lib/style.css'
 import '../static/css/global.css'
 
 // 引入awesome图标库
-import 'vue-awesome'
+import './assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
 
 // 引入mockjs
