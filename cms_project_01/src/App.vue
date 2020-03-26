@@ -15,7 +15,7 @@
     <div class="tabBar">
       <ul>
         <li v-for="(tab, index) in tabs" :key="tab.id">
-          <router-link :to="tab.routerName" exact @click.native="changeHash(index)" :class='{"link-active":index == currentIndex}'>
+          <router-link :to="tab.routerName" @click.native="changeHash(index)" :class='{"link-active":index === currentIndex}'>
             <img :src="tab.imgSrc">
             <p>{{tab.title}}</p>
           </router-link>
@@ -50,10 +50,10 @@ import vip from "./assets/huangguan.png";
 import shopcart from "./assets/goumai.png";
 import search from "./assets/chazhao.png";
 let tabs = [
-  { id: 1, title: "首页", imgSrc: index, routerName: { name: "home" } },
-  { id: 2, title: "会员", imgSrc: vip, routerName: { name: "vip" } },
-  { id: 3, title: "购物车", imgSrc: shopcart, routerName: { name: "cart" } },
-  { id: 4, title: "查找", imgSrc: search, routerName: { name: "search" } }
+  { id: 1, title: "首页", imgSrc: index, routerName: { name: 'home' } },
+  { id: 2, title: "会员", imgSrc: vip, routerName: { name: 'vip' } },
+  { id: 3, title: "购物车", imgSrc: shopcart, routerName: { name: 'cart' } },
+  { id: 4, title: "查找", imgSrc: search, routerName: { name: 'search' } }
 ];
 
 export default {

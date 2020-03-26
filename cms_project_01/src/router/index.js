@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import HelloWorld from '@/components/HelloWorld'
 
 // 引入
 import Home from '@/components/Home/Home'
@@ -10,9 +9,9 @@ import Search from '@/components/Search/Search'
 import NewsList from '@/components/News/NewsList'
 import NewsDetail from '@/components/News/NewsDetail'
 import PhotoList from '@/components/Photo/PhotoList'
-import PhotoDetail from '@/components/Photo/PhotoDetail';
+import PhotoDetail from '@/components/Photo/PhotoDetail'
 
-// 使用vue-router插件 Vue。prototype.$router = Router
+// 使用vue-router插件 Vue.prototype.$router = Router
 Vue.use(Router)
 
 export default new Router({
