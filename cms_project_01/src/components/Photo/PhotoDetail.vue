@@ -1,18 +1,21 @@
 <template>
   <div class="photo-detail">
+    <Navbar title="图文详情" /></Navbar>
     <div class="photo-little">
       <p>{{imgInfo.title}}</p>
       <span>发起日期:{{imgInfo.add_time | converTime('YYYY-MM-DD')}}</span>
       <span>{{imgInfo.click}}次浏览</span>
       <span>分类:民生经济</span>
 
-        <ul>
+        <!-- <ul>
             <li v-for="(thumImg,index) in thumImgs" :key="index">
                 <a href="javascript:void(0)">
                     <img :src="thumImg.src" alt=""/>
                 </a>
             </li>
-        </ul>
+        </ul> -->
+
+        <vue-preview :slides="thumImgs"></vue-preview>
 
       <div class="photo-desc">
         <p>{{imgInfo.content}}</p>
@@ -49,8 +52,15 @@ export default {
         console.log(perms);
         this.imgInfo = acct.data.data;
         this.thumImgs = perms.data.data;
+
+        this.thumImgs.forEach((item, index)=>{
+          item.w = 600;
+          item.h = 400;
+          item.msrc = item.src;
+        })
       })
     );
+
   }
 };
 </script>

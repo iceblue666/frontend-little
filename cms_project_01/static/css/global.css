@@ -23,3 +23,15 @@ body{
     width: 100%;
     /* overflow: hidden; */
 }
+
+figure{
+    width: 30%;
+    display: inline-block;
+    margin-left: 10px;
+}
+figure a{
+    display: inline-block;
+}
+figure a img{
+    width: 100px;
+}

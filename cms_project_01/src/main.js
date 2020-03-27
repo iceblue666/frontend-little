@@ -19,6 +19,10 @@ import '../static/css/global.css'
 import './assets/font-awesome-4.7.0/css/font-awesome.min.css'
 
 
+// 引入图片查看器
+import VuePreview from 'vue-preview'
+Vue.use(VuePreview);
+
 // 引入mockjs
 require('./mock.js');
 

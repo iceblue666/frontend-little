@@ -1,5 +1,6 @@
 <template>
   <div class="photoList">
+    <Navbar title="图文列表" /></Navbar>
     <div class="category-list">
       <ul>
         <li v-for="(category,index) in categoryList" @click="categoryHandler(category.id,index)">
@@ -52,7 +53,7 @@ export default {
             this.$toast({
               message:"没有图片",
               iconClass:'fa fa-times',
-              duration:10000
+              duration:2000
             })
           }
         })
