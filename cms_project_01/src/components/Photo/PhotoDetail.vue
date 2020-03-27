@@ -21,7 +21,7 @@
         <p>{{imgInfo.content}}</p>
       </div>
 
-      <!-- <Comment :cid = '$route.query.id' /> -->
+      <Comment :cid = '$route.query.id' />
     </div>
   </div>
 </template>

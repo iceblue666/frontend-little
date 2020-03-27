@@ -31,11 +31,21 @@ require('./mock.js');
 // 配置axios
 Vue.prototype.$axios = Axios;
 
+// 注册全局导航栏组件
 import Navbar from '@/components/Common/Navbar'
 Vue.component(Navbar.name,Navbar);
 
+// 注册全局评论组件
+import Comment from '@/components/Common/Comment'
+Vue.component(Comment.name,Comment);
+
+
+
 // 自定义Moment全局过滤器
 Vue.filter('converTime',(data, formatStr) => Moment(data).format(formatStr));
+
+// 自定义相对事件过滤器
+Vue.filter('relativeTime',(data) => Moment(data).fromNow());
 
 /* eslint-disable no-new */
 new Vue({

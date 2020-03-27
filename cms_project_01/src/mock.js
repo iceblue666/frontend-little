@@ -102,6 +102,21 @@ const produceThumImagesData = function() {
     }
 };
 
+const produceCommentData = function () {  
+    let messages = [];
+    for(let i = 1; i <= 10; i++){
+        let message = {
+            user_name:"匿名用户",
+            add_time:Random.date() + ' ' + Random.time(),
+            content:Random.csentence(10,20)
+        }
+        messages.push(message);
+    }
+    return{
+        messages
+    }
+}
+
 Mock.mock('api/newslist','get',produceNewsData);
 Mock.mock('api/home','get',produceHomeData);
 Mock.mock(/api\/getnew\/./,'get',produceNewData);
@@ -111,3 +126,4 @@ Mock.mock(/api\/getimages/,'get',producePhotoData);
 // Mock.mock('api/getimages/1','get',producePhotoData);
 Mock.mock(/api\/getimageinfo/,'get',produceImageInfoData);
 Mock.mock(/api\/getthumimages/,'get',produceThumImagesData);
+Mock.mock(/api\/getcomments/,'get',produceCommentData);
