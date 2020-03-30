@@ -47,6 +47,9 @@ Vue.filter('converTime',(data, formatStr) => Moment(data).format(formatStr));
 // 自定义相对事件过滤器
 Vue.filter('relativeTime',(data) => Moment(data).fromNow());
 
+// Moment设置中文
+Moment.locale('zh-cn')
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
