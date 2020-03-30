@@ -128,3 +128,6 @@ Mock.mock(/api\/getimageinfo/,'get',produceImageInfoData);
 Mock.mock(/api\/getthumimages/,'get',produceThumImagesData);
 Mock.mock(/api\/getcomments\/\d+\?pageindex\=[1-2]/,'get',produceCommentData);
 Mock.mock(/api\/getcomments\/\d+\?pageindex\=[^1-2]/,'get',{messages:[]});
+Mock.mock(/api\/postcomment\/\d+/,'post',function(options){
+    return {status:0 ,messages:"评论成功",options};
+});

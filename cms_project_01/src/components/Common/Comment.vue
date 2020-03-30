@@ -9,10 +9,10 @@
                     </div>
                 </li>
                 <li class="txt-comment">
-                    <textarea cols="50" rows="10"></textarea>
+                    <textarea cols="50" rows="10" v-model="commentContent"></textarea>
                 </li>
                 <li>
-                    发表评论按钮
+                    <mt-button type='primary' size='large' @click="commentHandler">评论</mt-button>
                 </li>
                 <li class="photo-comment">
                     <div>
@@ -39,10 +39,12 @@
         data(){
             return{
                 comments:[],
-                page:1
+                page:1,
+                commentContent:''
             }
         },
         methods:{
+            // 加载更多评论
             loadMore(){
                 this.$axios.get(`api/getcomments/${this.cid}?pageindex=${this.page}`)
                 .then(res => {
@@ -56,6 +58,22 @@
                 })
                 .catch(err => {
                     console.log('获取评论分页数据失败', err);
+                })
+            },
+            // 发表评论
+            commentHandler(){
+
+                this.$axios.post(`api/postcomment/${this.cid}`, 'content='+this.commentContent)
+                .then(res => {
+                    console.log(res);
+                    this.$toast(res.data.messages);
+
+                    this.commentContent = '';
+                    this.page = 1;
+                    this.loadMore();
+                })
+                .catch(err => {
+                    console.log('发表评论失败',err);
                 })
             }
         },
@@ -115,6 +133,7 @@ ul{
 }
 
 textarea {
-    width: 100%;
+    width: 98%;
+    margin-left: 1%;
 }
 </style>
