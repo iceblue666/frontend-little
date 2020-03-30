@@ -4,6 +4,8 @@ const Random = Mock.Random;
 
 const imgcategoryList = [{id:1,title:'明星美女'},{id:2,title:'空间设计'},{id:3,title:'户型装修'},{id:4,title:'广告摄影'},{id:5,title:'摄影技术'},{id:6,title:'拍摄手法'}]
 
+const CommentMessages = [];
+
 const produceNewData = function () {
     let newArticleObject = {
         id:1,
@@ -112,10 +114,13 @@ const produceCommentData = function () {
         }
         messages.push(message);
     }
+    messages.splice(0, 0, ...CommentMessages);
     return{
         messages
     }
 }
+
+
 
 Mock.mock('api/newslist','get',produceNewsData);
 Mock.mock('api/home','get',produceHomeData);
@@ -129,5 +134,8 @@ Mock.mock(/api\/getthumimages/,'get',produceThumImagesData);
 Mock.mock(/api\/getcomments\/\d+\?pageindex\=[1-2]/,'get',produceCommentData);
 Mock.mock(/api\/getcomments\/\d+\?pageindex\=[^1-2]/,'get',{messages:[]});
 Mock.mock(/api\/postcomment\/\d+/,'post',function(options){
+    CommentMessages.splice(0,0,{user_name:"我",
+    add_time:Random.date() + ' ' + Random.time(),
+    content:options.body});
     return {status:0 ,messages:"评论成功",options};
 });

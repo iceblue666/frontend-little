@@ -46,6 +46,9 @@
         methods:{
             // 加载更多评论
             loadMore(){
+                if(this.page === 1){
+                    this.comments = [];
+                }
                 this.$axios.get(`api/getcomments/${this.cid}?pageindex=${this.page}`)
                 .then(res => {
                     console.log(res.data);
@@ -63,7 +66,7 @@
             // 发表评论
             commentHandler(){
 
-                this.$axios.post(`api/postcomment/${this.cid}`, 'content='+this.commentContent)
+                this.$axios.post(`api/postcomment/${this.cid}`, this.commentContent)
                 .then(res => {
                     console.log(res);
                     this.$toast(res.data.messages);
