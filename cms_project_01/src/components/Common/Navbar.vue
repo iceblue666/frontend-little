@@ -31,9 +31,11 @@ export default {
     line-height: 40px;
     position: relative;
     background-color: #FD8008;
+    top: -1px;
 }
 h3{
     float: left;
+    color: #fff;
 }
 h3.back{
     margin-left: 15px;
