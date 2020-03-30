@@ -26,7 +26,7 @@
                     {{comment.user_name}}:{{comment.content}} {{comment.add_time | relativeTime}}
                 </li>
             </ul>
-            加载更多按钮
+            <mt-button type="danger" size="large" @click="loadMore">加载更多</mt-button>
         </div>
 
     </div>
@@ -38,21 +38,32 @@
         props:['cid'],
         data(){
             return{
-                comments:[]
+                comments:[],
+                page:1
+            }
+        },
+        methods:{
+            loadMore(){
+                this.$axios.get(`api/getcomments/${this.cid}?pageindex=${this.page}`)
+                .then(res => {
+                    console.log(res.data);
+                    if(res.data.messages.length === 0){
+                        this.$toast('没有数据');
+                    }
+
+                    this.comments.push(...res.data.messages);
+                    this.page++;
+                })
+                .catch(err => {
+                    console.log('获取评论分页数据失败', err);
+                })
             }
         },
         created(){
 
-            let page = this.$route.query.page || '1';
-            console.log(`api/getcomments/${this.cid}?pageindex=${page}`);
-            this.$axios.get(`api/getcomments/${this.cid}?pageindex=${page}`)
-            .then(res => {
-                console.log(res.data.messages);
-                this.comments = res.data.messages;
-            })
-            .catch(err => {
+            this.page = this.$route.query.page || '1';
+            this.loadMore();
 
-            })
         }
     }
 </script>

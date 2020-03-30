@@ -126,4 +126,5 @@ Mock.mock(/api\/getimages/,'get',producePhotoData);
 // Mock.mock('api/getimages/1','get',producePhotoData);
 Mock.mock(/api\/getimageinfo/,'get',produceImageInfoData);
 Mock.mock(/api\/getthumimages/,'get',produceThumImagesData);
-Mock.mock(/api\/getcomments/,'get',produceCommentData);
+Mock.mock(/api\/getcomments\/\d+\?pageindex\=[1-2]/,'get',produceCommentData);
+Mock.mock(/api\/getcomments\/\d+\?pageindex\=[^1-2]/,'get',{messages:[]});
