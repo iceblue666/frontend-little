@@ -50,6 +50,16 @@ Vue.filter('relativeTime',(data) => Moment(data).fromNow());
 // Moment设置中文
 Moment.locale('zh-cn')
 
+// 设置字数显示过滤器
+Vue.filter('controllShow',function(str,num){
+  if(str.length <= num){
+    return str;
+  }
+  else{
+    return str.substr(0,num-1)+"..."
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
