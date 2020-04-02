@@ -120,7 +120,27 @@ const produceCommentData = function () {
     }
 }
 
-
+const produceGoodsListData = function () {
+    let messages = [];
+    for(let i = 1; i <= 6; i++){
+        let message = {
+            id: i,
+            title: "华为手机" + Random.csentence(5,12),
+            user_name:"匿名用户",
+            add_time:Random.date() + ' ' + Random.time(),
+            content:"详细信息" + Random.csentence(1,5),
+            click: Random.integer(1,100),
+            img_url: Random.dataImage('100x100','mock图片'),
+            sell_price: 2195,
+            market_price: 2499,
+            stock_quantity: 60
+        }
+        messages.push(message);
+    }
+    return{
+        messages
+    }
+}
 
 Mock.mock('api/newslist','get',produceNewsData);
 Mock.mock('api/home','get',produceHomeData);
@@ -139,3 +159,5 @@ Mock.mock(/api\/postcomment\/\d+/,'post',function(options){
     content:options.body});
     return {status:0 ,messages:"评论成功",options};
 });
+
+Mock.mock(/api\/getgoods/,'get',produceGoodsListData);
