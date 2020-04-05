@@ -1,6 +1,6 @@
 <template>
     <div class="detail">
-        <Navbar title="新闻详情"></Navbar>
+        <Navbar :title="title"></Navbar>
         <div class="item">
             <p>{{detail.title}}</p>
             <div>
@@ -22,7 +22,9 @@
                 detail:{}
             }
         },
+        props:['title'],
         created(){
+            window.scrollTo(0, 0);
             let id = this.$route.query.id;
             this.$axios.get('api/getnew/1')
             .then(res=>{

@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="detail">
         <Navbar title="商品详情"></Navbar>
         <div class="outer-swiper">
             <MySwiper url="api/getlunbo" myHeight="250px"></MySwiper>
@@ -35,7 +35,7 @@
         <div class="product-info">
             <ul>
                 <li>
-                    <mt-button type="primary" size="large" plain>图文介绍</mt-button>
+                    <mt-button type="primary" size="large" plain @click.native="showPhotoInfo">图文介绍</mt-button>
                 </li>
                 <li>
                     <mt-button type="danger" size="large" plain>商品评论</mt-button>
@@ -47,14 +47,35 @@
 
 <script>
     export default {
-        
+        name:"GoodsDetail",
+        data(){
+            return{
+
+            }
+        },
+        created(){
+
+        },
+        methods:{
+            showPhotoInfo(){
+                this.$router.push({
+                    name:'photo.info',
+                    query:{
+                        id:this.$route.params.id
+                    }
+                })
+            }
+        }
     }
 </script>
 
 <style scoped>
+.detail{
+    margin-bottom: 100px;
+}
 
 .ball-enter-active{
-
+    animation: bonuce-in 1s;
 }
 
 .ball-leave{

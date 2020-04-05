@@ -51,7 +51,10 @@ export default new Router({
     {
       path:"/news/detail",
       name:"detail",
-      component:NewsDetail
+      component:NewsDetail,
+      props:{
+        title:"新闻详情"
+      }
     },
     {
       path:"/photo/list/:categoryId",
@@ -72,6 +75,14 @@ export default new Router({
       path:"/goods/detail/:id",
       name:"goods.detail",
       component:GoodsDetail
+    },
+    {
+      path:"/goods/photo/info",
+      name:"photo.info",
+      component:NewsDetail,
+      props:{
+        title:"图文介绍"
+      }
     },
   ]
 })
