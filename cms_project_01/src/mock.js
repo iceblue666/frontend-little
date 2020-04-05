@@ -51,7 +51,7 @@ const produceHomeData = function () {
         Images.push(newHomeObject);
     }
     return {
-        data:Images
+        messages:Images
     }
 }
 
@@ -143,7 +143,7 @@ const produceGoodsListData = function () {
 }
 
 Mock.mock('api/newslist','get',produceNewsData);
-Mock.mock('api/home','get',produceHomeData);
+Mock.mock('api/getlunbo','get',produceHomeData);
 Mock.mock(/api\/getnew\/./,'get',produceNewData);
 Mock.mock('api/getimgcategory','get',{message:imgcategoryList});
 Mock.mock(/api\/getimages/,'get',producePhotoData);

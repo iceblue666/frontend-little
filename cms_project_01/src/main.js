@@ -39,6 +39,9 @@ Vue.component(Navbar.name,Navbar);
 import Comment from '@/components/Common/Comment'
 Vue.component(Comment.name,Comment);
 
+// 注册全局轮播组件
+import MySwiper from '@/components/Common/MySwiper'
+Vue.component(MySwiper.name,MySwiper);
 
 
 // 自定义Moment全局过滤器
@@ -59,6 +62,29 @@ Vue.filter('controllShow',function(str,num){
     return str.substr(0,num-1)+"..."
   }
 })
+
+// 添加请求拦截器
+Axios.interceptors.request.use(function (config) {
+  Mint.Indicator.open({
+    text:'玩命加载ing...'
+  })
+
+  // 在发送请求之前做些什么
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
+// 添加响应拦截器
+Axios.interceptors.response.use(function (response) {
+  Mint.Indicator.close();
+  // 对响应数据做点什么
+  return response;
+}, function (error) {
+  // 对响应错误做点什么
+  return Promise.reject(error);
+});
 
 /* eslint-disable no-new */
 new Vue({

@@ -12,7 +12,7 @@
         >
           <ul class="page-loadmore-list">
             <li v-for="(goods, index) in goodsList">
-              <a href="javascript:void(0)">
+              <router-link :to='{name:"goods.detail",params:{id:goods.id}}'>
                 <img :src="goods.img_url" alt />
                 <div class="title">{{goods.title|controllShow(10)}}</div>
                 <div class="desc">
@@ -25,7 +25,7 @@
                   </div>
                   <div class="count">剩余{{goods.stock_quantity}}件</div>
                 </div>
-              </a>
+              </router-link>
             </li>
           </ul>
         </mt-loadmore>

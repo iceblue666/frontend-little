@@ -1,11 +1,12 @@
 <template>
   <div id="home">
     <!-- 轮播图 -->
-    <mt-swipe :auto="4000" class="swiper-fa">
+    <!-- <mt-swipe :auto="4000" class="swiper-fa">
       <mt-swipe-item v-for="(item, index) in imgs" :key="index" class="swiper">
         <img :src="item.img_url" alt />>
       </mt-swipe-item>
-    </mt-swipe>
+    </mt-swipe> -->
+    <MySwiper url="api/getlunbo" myHeight="250px"></MySwiper>
     <!--/ 轮播图 -->
     <!-- 九宫格 -->
     <div class="list">
@@ -44,16 +45,16 @@ export default {
     };
   },
   created() {
-    this.$axios
-      .get("api/home")
-      .then(res => {
-        // console.log(res);
-        this.imgs = res.data.data;
-        // console.log(this.imgs);
-      })
-      .catch(err => {
-        console.log("轮播图异常", err);
-      });
+    // this.$axios
+    //   .get("api/home")
+    //   .then(res => {
+    //     // console.log(res);
+    //     this.imgs = res.data.data;
+    //     // console.log(this.imgs);
+    //   })
+    //   .catch(err => {
+    //     console.log("轮播图异常", err);
+    //   });
   }
 };
 </script>
