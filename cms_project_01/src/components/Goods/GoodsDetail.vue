@@ -90,6 +90,7 @@ export default {
     },
     ballAfterEnter() {
       this.isExist = false;
+      this.$bus.$emit("sendPickNum", this.picknumber);
     }
   }
 };

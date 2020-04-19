@@ -78,6 +78,11 @@ export default {
 
       this.$router.push({ name: this.selected });
     }
+  },
+  created(){
+    this.$bus.$on('sendPickNum', (data)=>{
+      this.CartNum += data;
+    })
   }
 };
 </script>
