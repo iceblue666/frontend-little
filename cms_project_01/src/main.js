@@ -31,6 +31,11 @@ require('./mock.js');
 // 配置axios
 Vue.prototype.$axios = Axios;
 
+import EventBus from './EventBus'
+
+Vue.prototype.$bus = EventBus;
+
+
 // 注册全局导航栏组件
 import Navbar from '@/components/Common/Navbar'
 Vue.component(Navbar.name,Navbar);
@@ -42,6 +47,8 @@ Vue.component(Comment.name,Comment);
 // 注册全局轮播组件
 import MySwiper from '@/components/Common/MySwiper'
 Vue.component(MySwiper.name,MySwiper);
+
+
 
 
 // 自定义Moment全局过滤器
