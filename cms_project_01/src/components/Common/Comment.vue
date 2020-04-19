@@ -90,8 +90,8 @@
 </script>
 
 <style scoped>
-.tmpl{
-    padding-bottom: 100px;
+.tmp1{
+    margin-bottom: 100px;
 }
 
 .photo-comment > div span:nth-child(1){

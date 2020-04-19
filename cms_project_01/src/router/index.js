@@ -12,6 +12,7 @@ import PhotoList from '@/components/Photo/PhotoList'
 import PhotoDetail from '@/components/Photo/PhotoDetail'
 import GoodsList from '@/components/Goods/GoodsList'
 import GoodsDetail from '@/components/Goods/GoodsDetail'
+import GoodsComment from '@/components/Goods/GoodsComment'
 
 // 使用vue-router插件 Vue.prototype.$router = Router
 Vue.use(Router)
@@ -84,5 +85,10 @@ export default new Router({
         title:"图文介绍"
       }
     },
+    {
+      path:"/goods/comment",
+      name:"goods.comment",
+      component:GoodsComment
+    }
   ]
 })

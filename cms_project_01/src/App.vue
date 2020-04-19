@@ -17,6 +17,7 @@
         <li v-for="(tab, index) in tabs" :key="tab.id">
           <router-link :to="tab.routerName" @click.native="changeHash(index)" :class='{"link-active":index === currentIndex}'>
             <img :src="tab.imgSrc">
+            <mt-badge size="small" color="#FC0107" v-if="index === 2">{{CartNum}}</mt-badge>
             <p>{{tab.title}}</p>
           </router-link>
         </li>
@@ -62,7 +63,8 @@ export default {
     return {
       selected: "",
       tabs: tabs,
-      currentIndex:0
+      currentIndex:0,
+      CartNum:0
     };
   },
   methods:{
@@ -113,6 +115,7 @@ export default {
   display: inline-block;
   width:100%;
   padding-top: 10px;
+  position: relative;
 }
 .tabBar ul li a.link-active{
   background-color: #04c2c8;
@@ -122,5 +125,10 @@ export default {
 }
 .tabBar ul li a img{
   width:25px;
+}
+.mint-badge.is-size-small{
+  position: absolute;
+  top:0;
+  right: 10px;
 }
 </style>
