@@ -1,17 +1,18 @@
 <template>
     <div>
+        <Navbar title="购物车"></Navbar>
         <div class="pay-detail">
             <ul>
-                <li class="p-list">
+                <li class="p-list" v-for="(shop,index) in shopCart" :key="shop.id">
                     <mt-switch></mt-switch>
                     <img src="" alt="" srcset="">
                     <div class="pay-calc">
-                        <p>商品标题</p>
+                        <p>{{shop.title}}</p>
                         <div class="calc">
-                            <span>$777</span>
-                            <span>-</span>
-                            <span>1</span>
-                            <span>+</span>
+                            <span>${{shop.sell_price}}</span>
+                            <span @click="substract(shop)">-</span>
+                            <span>{{shop.count}}</span>
+                            <span @click="add(shop)">+</span>
                             <a href="">删除</a>
                         </div>
                     </div>
@@ -21,7 +22,7 @@
         <div class="show-price">
             <div class="show-1">
                 <p>总计（不含运费）：</p>
-                <span>已经选择商品1件，总价$888</span>
+                <span>已经选择商品{{payment.count}}件，总价${{payment.total}}</span>
             </div>
             <div class="show-2">
                 <mt-button type="danger" size="large">去结算</mt-button>
@@ -31,8 +32,50 @@
 </template>
 
 <script>
+import GoodsTool from '@/GoodsTool'
     export default {
-        name: 'Cart'
+        name: 'Cart',
+        data(){
+            return{
+                shopCart:[]
+            }
+        },
+        computed: {
+            payment(){
+                let total = 0;
+                let count = 0;
+                this.shopCart.forEach((shop)=>{
+                    count += shop.count;
+                    total += shop.count*shop.sell_price;
+                })
+                return{
+                    total,count
+                }
+            }
+        },
+        beforeRouteLeave (to, from, next) {
+            // let res = confirm("确定离开吗？")
+            // if(res){
+            //     alert("成功保存");
+            //     next();
+            // }
+            // else{
+            //     next(false)
+            // }
+        },
+        created() {
+            this.shopCart.push({"count":GoodsTool.getTotalCount(),"id":1,"title":"三星手机 我们不生产手机，我们只是炸弹的搬运工","sell_price":3888})
+        },
+        methods: {
+            substract(shop){
+                shop.count--;
+                console.log(this.shopCart);
+            },
+            add(shop){
+                shop.count++;
+                console.log(this.shopCart);
+            }
+        },
     }
 </script>
 

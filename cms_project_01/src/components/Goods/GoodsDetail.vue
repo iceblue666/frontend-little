@@ -51,6 +51,7 @@
 </template>
 
 <script>
+import GoodsTool from '@/GoodsTool'
 export default {
   name: "GoodsDetail",
   data() {
@@ -91,6 +92,11 @@ export default {
     ballAfterEnter() {
       this.isExist = false;
       this.$bus.$emit("sendPickNum", this.picknumber);
+
+      GoodsTool.add({
+        id:1,
+        num:this.picknumber
+      })
     }
   }
 };

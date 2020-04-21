@@ -50,6 +50,7 @@ import index from "./assets/shouye.png";
 import vip from "./assets/huangguan.png";
 import shopcart from "./assets/goumai.png";
 import search from "./assets/chazhao.png";
+import GoodsTool from '@/GoodsTool'
 let tabs = [
   { id: 1, title: "首页", imgSrc: index, routerName: { name: 'home' } },
   { id: 2, title: "会员", imgSrc: vip, routerName: { name: 'vip' } },
@@ -83,6 +84,8 @@ export default {
     this.$bus.$on('sendPickNum', (data)=>{
       this.CartNum += data;
     })
+
+    this.CartNum = GoodsTool.getTotalCount();
   }
 };
 </script>
