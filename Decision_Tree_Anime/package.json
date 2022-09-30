@@ -10,7 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "animejs": "^3.1.0",
-    "d3": "^5.15.0",
+    "d3": "^7.6.1",
     "echarts": "^4.6.0"
   }
 }
